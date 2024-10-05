@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -25,4 +26,6 @@ public class Area {
 
     @Column(nullable = false)
     private String location;
+
+    private Timestamp last_generated_tip;
 }
