@@ -1,4 +1,4 @@
-/*package com.example.template2.controller;
+package com.example.template2.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,4 +64,3 @@ public class WeatherForecastService {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
 }
-*/

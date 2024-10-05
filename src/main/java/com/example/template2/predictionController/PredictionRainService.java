@@ -1,4 +1,4 @@
-/*package com.example.template2.predictionController;
+package com.example.template2.predictionController;
 
  class PredictionRainController {
-}*/
+}

@@ -1,15 +1,13 @@
 package com.example.template2.controller;
 
-import com.example.template2.model.Area;
-import com.example.template2.model.AreaRepository;
-import com.example.template2.model.SimpleArea;
+import com.example.template2.model.*;
 import com.example.template2.service.AreaService;
+import com.example.template2.userDeleteRequest.UserDeleteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,19 +15,21 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/db")
+@RequestMapping("/api/db/")
 public class AreaController {
 
 
     private final AreaRepository areaRepository;
     private final AreaService areaService;
     private final MessageDigest messageDigest;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AreaController(AreaRepository areaRepository, AreaService areaService) throws NoSuchAlgorithmException {
+    public AreaController(AreaRepository areaRepository, AreaService areaService, UserRepository userRepository) throws NoSuchAlgorithmException {
         this.areaRepository = areaRepository;
         this.areaService = areaService;
         this.messageDigest = MessageDigest.getInstance("SHA-256");
+        this.userRepository = userRepository;
     }
 
     private String hashPassword(String password) {
@@ -73,7 +73,7 @@ public class AreaController {
         }
     }
 
-    @DeleteMapping("/area/{id}")
+    /*@DeleteMapping("/area/{id}")
     public ResponseEntity<Object> deleteAreaById(@PathVariable int id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserLogin = authentication.getName();
@@ -88,8 +88,30 @@ public class AreaController {
 
         areaRepository.deleteById(id);
         return ResponseEntity.ok().build();
+    }*/
+
+    @DeleteMapping("/area/{id}")
+    public ResponseEntity<Object> deleteAreaById(@PathVariable int id, @RequestBody UserDeleteRequest userDeleteRequest) {
+
+        Optional<User> optionalUser =  userRepository.findById(userDeleteRequest.getLogin());
+        User user = optionalUser.get();
+        String hashedPassword = hashPassword(userDeleteRequest.getPassword());
+
+        if(!optionalUser.isPresent()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
+        if(!hashedPassword.equals(user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid password");
+        }
+
+        Optional<Area> optionalArea = this.areaRepository.findById(id);
+
+        if (!optionalArea.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        areaRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
-
-
-
 }

@@ -9,7 +9,6 @@ import java.util.Optional;
 
 public interface AreaRepository extends JpaRepository<Area, Integer> {
 
-
     /*
     @Query(value = "SELECT * FROM area WHERE user_login=:login;", nativeQuery = true)
     List<Area> findAllByUserLogin();
