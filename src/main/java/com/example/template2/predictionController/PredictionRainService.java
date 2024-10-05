@@ -1,6 +1,8 @@
-<<<<<<< Updated upstream
+
 package com.example.template2.predictionController;
 
+
+ class PredictionRainController {
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,5 +63,5 @@ public class PredictionRainService {
         }
     }
 }
-=======
->>>>>>> Stashed changes
+
+
