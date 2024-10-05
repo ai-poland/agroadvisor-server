@@ -26,12 +26,19 @@ public class SoilMoistureController {
     @GetMapping("/SoilMoisture")
     public ResponseEntity<Map<String, Double>> getSoilMoistureData(
             @RequestParam double longitude,
+<<<<<<< HEAD
             @RequestParam double latitude,
             @RequestParam String startDate,  // Dodany parametr startDate
             @RequestParam String endDate) {  // Dodany parametr endDate
 
         String url = "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=GWETROOT,PRECTOT&community=AG&longitude="
                 + longitude + "&latitude=" + latitude + "&start=" + startDate + "&end=" + endDate + "&format=JSON"; // dynamiczne daty
+=======
+            @RequestParam double latitude) {
+
+        String url = "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=GWETROOT,PRECTOT&community=AG&longitude="
+                + longitude + "&latitude=" + latitude + "&start=20220101&end=20220131&format=JSON";
+>>>>>>> origin/main
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet request = new HttpGet(url);
