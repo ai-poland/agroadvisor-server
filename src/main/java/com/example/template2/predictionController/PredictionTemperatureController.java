@@ -22,8 +22,7 @@ public class PredictionTemperatureController {
     public ResponseEntity<?> getPredictionTemperature(
             @RequestParam double latitude,
             @RequestParam double longitude,
-            @RequestParam String startDate,
-            @RequestParam String endDate) {
+            @RequestParam String day) {
         String url = String.format("https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s&units=metric", latitude, longitude, openWeatherApiKey);
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -40,9 +39,9 @@ public class PredictionTemperatureController {
                 Map<String, Object> prediction = new HashMap<>();
                 prediction.put("latitude", latitude);
                 prediction.put("longitude", longitude);
-                prediction.put("temperature", mainData.get("temp"));
-                prediction.put("start_date", startDate);
-                prediction.put("end_date", endDate);
+                prediction.put("temperature", mainData != null ? mainData.get("temp") : "No data");
+                prediction.put("humidity", mainData != null ? mainData.get("humidity") : "No data");
+                prediction.put("day", day);
 
                 return ResponseEntity.ok(prediction);
             } else {
