@@ -1,22 +1,22 @@
 package com.example.template2.service;
 
-import com.example.template2.model.Area;
+import com.example.template2.GPT;
+import com.example.template2.model.AreaRepository;
 import com.example.template2.model.Tip;
 import com.example.template2.model.TipRepository;
-import com.example.template2.model.User;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
 public class TipService {
 
     private final TipRepository tipRepository;
+    private final AreaRepository areaRepository;
 
-    public TipService(TipRepository tipRepository) {
+    public TipService(TipRepository tipRepository, AreaRepository areaRepository) {
         this.tipRepository = tipRepository;
+        this.areaRepository = areaRepository;
     }
 
 
@@ -32,10 +32,21 @@ public class TipService {
     }
 
 
-    public ResponseEntity<Object> generateTip() {
+    public ResponseEntity<Object> generateTip(int area_id) {
         Tip tip = new Tip();
-        // do something here
+
+        if (!areaRepository.existsById(area_id))
+        {
+            return ResponseEntity.badRequest().build();
+        }
+
+        tip.setArea(areaRepository.findById(area_id).get());
+
+        String body;
+
+        body = GPT.callOpenAI("", "");
+        tip.setContent(body);
+
         return new ResponseEntity<>(tip, HttpStatus.CREATED);
     }
-
 }
