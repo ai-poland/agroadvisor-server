@@ -21,41 +21,43 @@
 //@RestController
 //public class VegetationGrowthController {
 //
-//    // Podstawowy URL do API MODIS
-//    private final String modisApiUrl = "https://modis.ornl.gov/rst/api/v1/";
+//    // Base URL for OpenWeatherMap Free API
+//    private final String openWeatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
 //
-//    @GetMapping("/modis")
-//    public ResponseEntity<Map<String, Object>> getModisData(
-//            @RequestParam String username,
-//            @RequestParam String password) {
+//    @GetMapping("/weather")
+//    public ResponseEntity<Map<String, Object>> getWeatherData(
+//            @RequestParam double latitude,
+//            @RequestParam double longitude,
+//            @RequestParam String apiKey) {
 //
-//        // Zastąp "your_endpoint" odpowiednim endpointem, np. "MODIS/Terra"
-//        String endpoint = "MODIS/Terra";  // Możesz zmienić ten endpoint w zależności od potrzeb
-//        String url = modisApiUrl + endpoint;
+//        String url = String.format("%s?lat=%s&lon=%s&appid=%s&units=metric", openWeatherApiUrl, latitude, longitude, apiKey);
 //
 //        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 //            HttpGet request = new HttpGet(url);
-//            // Ustawienie nagłówka autoryzacji
-//            request.setHeader("Authorization", "Basic " +
-//                    java.util.Base64.getEncoder().encodeToString((username + ":" + password).getBytes()));
 //
-//            CloseableHttpResponse response = httpClient.execute(request);
-//            HttpEntity entity = response.getEntity();
+//            try (CloseableHttpResponse response = httpClient.execute(request)) {
+//                HttpEntity entity = response.getEntity();
 //
-//            if (entity != null) {
-//                String result = EntityUtils.toString(entity);
-//                ObjectMapper mapper = new ObjectMapper();
-//                JsonNode jsonNode = mapper.readTree(result);
+//                if (entity != null) {
+//                    String result = EntityUtils.toString(entity);
+//                    ObjectMapper mapper = new ObjectMapper();
+//                    JsonNode jsonNode = mapper.readTree(result);
 //
-//                Map<String, Object> modisData = new HashMap<>();
-//                modisData.put("data", jsonNode);  // Zwracamy dane w formacie JSON
+//                    Map<String, Object> weatherData = new HashMap<>();
+//                    weatherData.put("data", jsonNode);  // Returning data in JSON format
 //
-//                return ResponseEntity.ok(modisData);
+//                    return ResponseEntity.ok(weatherData);
+//                }
 //            }
 //        } catch (IOException e) {
 //            e.printStackTrace();
+//            Map<String, Object> error = new HashMap<>();
+//            error.put("error", "An error occurred while fetching weather data.");
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 //        }
 //
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//        Map<String, Object> error = new HashMap<>();
+//        error.put("error", "No data available.");
+//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 //    }
 //}

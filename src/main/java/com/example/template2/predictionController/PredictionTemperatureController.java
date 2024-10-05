@@ -1,8 +1,5 @@
-
 package com.example.template2.predictionController;
 
-
- class PredictionRainController {
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +13,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class PredictionRainService {
+public class PredictionTemperatureController {
 
     @Value("${openweather.api.key}")
     private String openWeatherApiKey;
 
-    @GetMapping("/predictionRain")
-    public ResponseEntity<?> getPredictionRain(
+    @GetMapping("/predictionTemperature")
+    public ResponseEntity<?> getPredictionTemperature(
             @RequestParam double latitude,
             @RequestParam double longitude,
             @RequestParam String day) {
@@ -31,13 +28,12 @@ public class PredictionRainService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            // Request weather data from OpenWeather
+            // Request temperature data from OpenWeather API
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
                 Map<String, Object> data = objectMapper.readValue(response.getBody(), HashMap.class);
                 Map<String, Object> mainData = (Map<String, Object>) data.get("main");
-                Map<String, Object> rainData = (Map<String, Object>) data.get("rain");
 
                 // Prepare prediction response
                 Map<String, Object> prediction = new HashMap<>();
@@ -45,7 +41,6 @@ public class PredictionRainService {
                 prediction.put("longitude", longitude);
                 prediction.put("temperature", mainData != null ? mainData.get("temp") : "No data");
                 prediction.put("humidity", mainData != null ? mainData.get("humidity") : "No data");
-                prediction.put("rain_prediction", rainData != null ? rainData.toString() : "No rain forecast");
                 prediction.put("day", day);
 
                 return ResponseEntity.ok(prediction);
@@ -63,5 +58,3 @@ public class PredictionRainService {
         }
     }
 }
-
-
