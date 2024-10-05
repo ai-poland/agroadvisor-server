@@ -1,4 +1,4 @@
-package com.example.template2.controller;
+package com.example.template2.predictionController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class WeatherForecastService {
+public class PredictionWeatherForecastService {
 
     private final String apiKey = "d3dac631ab0ded23d77c3597b162a860";
 

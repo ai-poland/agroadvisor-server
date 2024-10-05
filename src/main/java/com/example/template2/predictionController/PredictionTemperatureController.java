@@ -13,13 +13,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class PredictionRainService {
+public class PredictionTemperatureController {
 
     @Value("${openweather.api.key}")
     private String openWeatherApiKey;
 
-    @GetMapping("/predictionRain")
-    public ResponseEntity<?> getPredictionRain(
+    @GetMapping("/predictionTemperature")
+    public ResponseEntity<?> getPredictionTemperature(
             @RequestParam double latitude,
             @RequestParam double longitude,
             @RequestParam String startDate,
@@ -29,21 +29,18 @@ public class PredictionRainService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            // Request weather data from OpenWeather
+            // Request temperature data from OpenWeather API
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
                 Map<String, Object> data = objectMapper.readValue(response.getBody(), HashMap.class);
                 Map<String, Object> mainData = (Map<String, Object>) data.get("main");
-                Map<String, Object> rainData = (Map<String, Object>) data.get("rain");
 
                 // Prepare prediction response
                 Map<String, Object> prediction = new HashMap<>();
                 prediction.put("latitude", latitude);
                 prediction.put("longitude", longitude);
                 prediction.put("temperature", mainData.get("temp"));
-                prediction.put("humidity", mainData.get("humidity"));
-                prediction.put("rain_prediction", rainData != null ? rainData.toString() : "No rain forecast");
                 prediction.put("start_date", startDate);
                 prediction.put("end_date", endDate);
 
