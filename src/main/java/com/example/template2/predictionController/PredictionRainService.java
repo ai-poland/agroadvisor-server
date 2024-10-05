@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 package com.example.template2.predictionController;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -41,8 +40,8 @@ public class PredictionRainService {
                 Map<String, Object> prediction = new HashMap<>();
                 prediction.put("latitude", latitude);
                 prediction.put("longitude", longitude);
-                prediction.put("temperature", mainData != null ? mainData.get("temp") : "No data");
-                prediction.put("humidity", mainData != null ? mainData.get("humidity") : "No data");
+                prediction.put("temperature", mainData.get("temp"));
+                prediction.put("humidity", mainData.get("humidity"));
                 prediction.put("rain_prediction", rainData != null ? rainData.toString() : "No rain forecast");
                 prediction.put("day", day);
 
@@ -61,5 +60,3 @@ public class PredictionRainService {
         }
     }
 }
-=======
->>>>>>> Stashed changes
