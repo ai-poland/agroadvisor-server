@@ -3,6 +3,7 @@ package com.example.template2.controller;
 import com.example.template2.model.Area;
 import com.example.template2.model.AreaRepository;
 import com.example.template2.model.SimpleArea;
+import com.example.template2.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +18,12 @@ public class AreaController {
 
 
     private final AreaRepository areaRepository;
-
+    private final AreaService areaService;
 
     @Autowired
-    public AreaController(AreaRepository areaRepository) {
+    public AreaController(AreaRepository areaRepository, AreaService areaService) {
         this.areaRepository = areaRepository;
+        this.areaService = areaService;
     }
 
 
@@ -55,9 +57,14 @@ public class AreaController {
             Optional<Area> area = areaRepository.findById(id);
             return ResponseEntity.ok(area);
         }
-        else
-        {
+        else {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/area/{id}")
+    public ResponseEntity<Object> deleteAreaById(@PathVariable int id) {
+        return ResponseEntity.ok(this.areaService.deleteAreaById(id));
+    }
+
 }
