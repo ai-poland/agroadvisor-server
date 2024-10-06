@@ -4,7 +4,6 @@ import com.example.template2.model.Area;
 import com.example.template2.model.AreaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 

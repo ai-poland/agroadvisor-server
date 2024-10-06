@@ -1,6 +1,6 @@
-package com.example.template2.service;
+package com.aipol.agroadvisor.service;
 
-import com.example.template2.model.User;
+import com.aipol.agroadvisor.model.User;
 import com.example.template2.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

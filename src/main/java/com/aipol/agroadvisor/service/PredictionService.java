@@ -2,7 +2,6 @@ package com.example.template2.service;
 
 import com.example.template2.model.Prediction;
 import com.example.template2.model.PredictionRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
