@@ -1,4 +1,4 @@
-package com.example.template2.model;
+package com.aipol.agroadvisor.model;
 
 public interface SimpleArea {
     int getId();

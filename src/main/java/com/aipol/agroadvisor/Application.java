@@ -1,4 +1,4 @@
-package com.example.template2;
+package com.aipol.agroadvisor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

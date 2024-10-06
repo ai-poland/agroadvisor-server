@@ -1,7 +1,7 @@
-package com.example.template2.service;
+package com.aipol.agroadvisor.service;
 
-import com.example.template2.model.Prediction;
-import com.example.template2.model.PredictionRepository;
+import com.aipol.agroadvisor.model.Prediction;
+import com.aipol.agroadvisor.model.PredictionRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

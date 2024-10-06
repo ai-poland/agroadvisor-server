@@ -1,7 +1,7 @@
-package com.example.template2.service;
+package com.aipol.agroadvisor.service;
 
-import com.example.template2.model.Area;
-import com.example.template2.model.AreaRepository;
+import com.aipol.agroadvisor.model.Area;
+import com.aipol.agroadvisor.model.AreaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
