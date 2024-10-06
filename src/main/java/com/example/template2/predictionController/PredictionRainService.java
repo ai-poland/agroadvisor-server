@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 package com.example.template2.predictionController;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -59,4 +63,8 @@ public class PredictionRainService {
             return ResponseEntity.status(500).body(error);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
