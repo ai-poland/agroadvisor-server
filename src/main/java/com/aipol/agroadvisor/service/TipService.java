@@ -1,6 +1,6 @@
 package com.aipol.agroadvisor.service;
 
-import com.example.template2.GPT;
+import com.aipol.agroadvisor.GPT;
 import com.aipol.agroadvisor.model.AreaRepository;
 import com.aipol.agroadvisor.model.Tip;
 import com.aipol.agroadvisor.model.TipRepository;

@@ -1,5 +1,6 @@
 package com.aipol.agroadvisor.controller;
 
+import com.aipol.agroadvisor.model.*;
 import com.aipol.agroadvisor.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
