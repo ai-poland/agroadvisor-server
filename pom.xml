@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>template2</artifactId>
+	<groupId>com.aipol</groupId>
+	<artifactId>agroadvisor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>template2</name>
-	<description>template2</description>
+	<name>agroadvisor</name>
+	<description>agroadvisor</description>
 	<url/>
 	<licenses>
 		<license/>
