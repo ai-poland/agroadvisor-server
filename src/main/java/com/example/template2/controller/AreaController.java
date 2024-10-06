@@ -93,11 +93,11 @@ public class AreaController {
     }*/
 
     @DeleteMapping("/area/{id}")
-    public ResponseEntity<Object> deleteAreaById(@PathVariable int id, @RequestBody UserDeleteRequest userDeleteRequest) {
+    public ResponseEntity<Object> deleteAreaById(@PathVariable int id, @RequestParam String login, @RequestParam String password) {
 
-        Optional<User> optionalUser =  userRepository.findById(userDeleteRequest.getLogin());
+        Optional<User> optionalUser =  userRepository.findById(login);
         User user = optionalUser.get();
-        String hashedPassword = hashPassword(userDeleteRequest.getPassword());
+        String hashedPassword = hashPassword(password);
 
         if(!optionalUser.isPresent()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
