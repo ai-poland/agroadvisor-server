@@ -1,6 +1,6 @@
-package com.example.template2.controller;
+package com.aipol.agroadvisor.controller;
 
-import com.example.template2.service.TipService;
+import com.aipol.agroadvisor.service.TipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

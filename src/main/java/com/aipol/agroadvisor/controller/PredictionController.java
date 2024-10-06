@@ -1,7 +1,7 @@
-package com.example.template2.controller;
+package com.aipol.agroadvisor.controller;
 
-import com.example.template2.model.Prediction;
-import com.example.template2.service.PredictionService;
+import com.aipol.agroadvisor.model.Prediction;
+import com.aipol.agroadvisor.service.PredictionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

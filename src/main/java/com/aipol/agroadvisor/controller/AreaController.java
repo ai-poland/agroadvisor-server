@@ -1,7 +1,6 @@
-package com.example.template2.controller;
+package com.aipol.agroadvisor.controller;
 
-import com.example.template2.model.*;
-import com.example.template2.service.AreaService;
+import com.aipol.agroadvisor.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

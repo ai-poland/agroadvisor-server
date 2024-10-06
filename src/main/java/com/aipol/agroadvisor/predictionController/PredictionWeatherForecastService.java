@@ -1,4 +1,4 @@
-package com.example.template2.predictionController;
+package com.aipol.agroadvisor.predictionController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,7 +1,7 @@
-package com.example.template2.controller;
+package com.aipol.agroadvisor.controller;
 
-import com.example.template2.model.User;
-import com.example.template2.service.UserService;
+import com.aipol.agroadvisor.model.User;
+import com.aipol.agroadvisor.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

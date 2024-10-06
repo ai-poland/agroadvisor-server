@@ -1,4 +1,4 @@
-package com.example.template2.predictionController;
+package com.aipol.agroadvisor.predictionController;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
