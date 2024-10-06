@@ -2,7 +2,6 @@ package com.example.template2.controller;
 
 import com.example.template2.model.*;
 import com.example.template2.service.AreaService;
-import com.example.template2.userDeleteRequest.UserDeleteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
