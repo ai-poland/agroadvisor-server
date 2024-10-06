@@ -1,4 +1,4 @@
-package com.example.template2.model;
+package com.aipol.agroadvisor.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.example.template2.model;
+package com.aipol.agroadvisor.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
