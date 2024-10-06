@@ -28,10 +28,10 @@ public class PredictionRainService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            // Request weather data from OpenWeather
-            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+                 // Request weather data from OpenWeather
+                 ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
-            if (response.getStatusCode().is2xxSuccessful()) {
+                 if (response.getStatusCode().is2xxSuccessful()) {
                 Map<String, Object> data = objectMapper.readValue(response.getBody(), HashMap.class);
                 Map<String, Object> mainData = (Map<String, Object>) data.get("main");
                 Map<String, Object> rainData = (Map<String, Object>) data.get("rain");
