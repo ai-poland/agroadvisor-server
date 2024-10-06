@@ -1,4 +1,3 @@
-
 package com.example.template2.predictionController;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -61,3 +60,4 @@ public class PredictionRainService {
         }
     }
 }
+
